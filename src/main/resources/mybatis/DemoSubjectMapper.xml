@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lyh.demo.shardingtest.mapper.DemoSubjectMapper">
+  <resultMap id="BaseResultMap" type="lyh.demo.shardingtest.domain.DemoSubject">
+    <!--@mbg.generated-->
+    <!--@Table demo_subject-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="teacherId" jdbcType="VARCHAR" property="teacherid" />
+    <result column="teacherName" jdbcType="VARCHAR" property="teachername" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="score" jdbcType="VARCHAR" property="score" />
+    <result column="weight" jdbcType="VARCHAR" property="weight" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, teacherId, teacherName, createTime, score, weight, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from demo_subject
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from demo_subject
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="lyh.demo.shardingtest.domain.DemoSubject" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into demo_subject (`name`, teacherId, teacherName, 
+      createTime, score, weight, 
+      description)
+    values (#{name,jdbcType=VARCHAR}, #{teacherid,jdbcType=VARCHAR}, #{teachername,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{score,jdbcType=VARCHAR}, #{weight,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="lyh.demo.shardingtest.domain.DemoSubject" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into demo_subject
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="teacherid != null">
+        teacherId,
+      </if>
+      <if test="teachername != null">
+        teacherName,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherid != null">
+        #{teacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="teachername != null">
+        #{teachername,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lyh.demo.shardingtest.domain.DemoSubject">
+    <!--@mbg.generated-->
+    update demo_subject
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherid != null">
+        teacherId = #{teacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="teachername != null">
+        teacherName = #{teachername,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lyh.demo.shardingtest.domain.DemoSubject">
+    <!--@mbg.generated-->
+    update demo_subject
+    set `name` = #{name,jdbcType=VARCHAR},
+      teacherId = #{teacherid,jdbcType=VARCHAR},
+      teacherName = #{teachername,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      score = #{score,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
