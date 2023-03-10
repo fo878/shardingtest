@@ -1,13 +1,13 @@
 package lyh.demo.shardingtest;
 
-import lyh.demo.shardingtest.domain.DemoSubject;
-import lyh.demo.shardingtest.service.DemoSubjectService;
+import lyh.demo.shardingtest.service.ExampleService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.sql.SQLException;
 import java.util.Date;
 
 
@@ -16,30 +16,15 @@ import java.util.Date;
 class ShardingtestApplicationTests {
 
     @Autowired
-    private DemoSubjectService demoSubjectService;
+    private ExampleService exampleService;
 
     @Test
     void contextLoads() {
     }
 
-    @Test
-    void test1() {
-        DemoSubject demoSubject = demoSubjectService.selectByPrimaryKey(1);
-        System.out.println(demoSubject);
-    }
 
     @Test
-    void test2() {
-        DemoSubject demoSubject = new DemoSubject();
-        demoSubject.setId(2);
-        demoSubject.setName("数学");
-        demoSubject.setScore("100");
-        demoSubject.setTeacherid("123");
-        demoSubject.setCreatetime(new Date());
-        demoSubject.setWeight("0.6");
-        demoSubject.setDescription("123");
-        demoSubject.setTeachername("数学老师");
-        demoSubjectService.insert(demoSubject);
+    void test3() throws SQLException {
+        exampleService.run();
     }
-
 }
